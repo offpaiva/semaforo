@@ -2501,9 +2501,119 @@ extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
 # 9 "main.c" 2
 
+# 1 "./config.h" 1
+
+
+
+
+
+
+
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+# 10 "main.c" 2
+
+# 1 "./delay.h" 1
+
+
+
+
+void delay (int t);
+# 11 "main.c" 2
+
+# 1 "./newsemaforo.h" 1
+
+
+
+void newsemaforo_init (void);
+void verde (int x);
+void amarelo (int x);
+void vermelho ( int x);
+void verdePed ( int x);
+void vermelhoPed ( int x);
+int botaoPedestre ( void);
+# 12 "main.c" 2
+
 
 void main(void)
 {
+    int estado = 0;
+    int t;
+    while(1)
+    {
+        switch ( estado )
+        {
+            case 0:
+                    estado = 1;
+                    break;
+            case 1:
+                    newsemaforo_init();
+                    estado = 2;
+                    break;
+            case 2:
+                    amarelo(0);
+                    vermelho(0);
+                    verde(1);
+                    verdePed(0);
+                    vermelhoPed(1);
+                    if (botaoPedestre() == 1 )
+                    estado = 3;
+                    break;
+            case 3:
+                    t = 3000;
+                    estado = 4;
+                    break;
+            case 4:
+                    _delay(1);
+                    --t;
+                    if (t<=0)
+                    estado = 5;
+                    break;
+            case 5:
+                    verde(0);
+                    vermelho(0);
+                    verdePed (0);
+                    amarelo (1);
+                    vermelhoPed (1);
+                    t = 2000;
+                    estado = 6;
+                    break;
+            case 6:
+                    _delay(1);
+                    --t;
+                    if (t<=0)
+                    estado = 7;
+                    break;
+            case 7:
+                    verde (0);
+                    amarelo(0);
+                    vermelhoPed(0);
+                    vermelho(1);
+                    verdePed(1);
+                    t = 4000;
+                    break;
+            case 8:
+                    _delay(1);
+                    --t;
+                    if (t<=0)
+                    estado = 2;
 
+                    break;
+
+        }
+
+    }
 
 }

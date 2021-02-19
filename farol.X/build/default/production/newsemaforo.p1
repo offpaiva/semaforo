@@ -1,4 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"1608 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1608:     struct {
+[s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S59 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"1607
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1607: typedef union {
+[u S58 `S59 1 ]
+[n S58 . . ]
+"1619
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1619: extern volatile TRISDbits_t TRISDbits __attribute__((address(0x088)));
+[v _TRISDbits `VS58 ~T0 @X0 0 e@136 ]
+"358
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 358:     struct {
+[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S12 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"357
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 357: typedef union {
+[u S11 `S12 1 ]
+[n S11 . . ]
+"369
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 369: extern volatile PORTDbits_t PORTDbits __attribute__((address(0x008)));
+[v _PORTDbits `VS11 ~T0 @X0 0 e@8 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -233,15 +255,158 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"11 newsemaforo.c
-[; ;newsemaforo.c: 11: void semaforo_inti (void)
-[v _semaforo_inti `(v ~T0 @X0 1 ef ]
-"12
-[; ;newsemaforo.c: 12: {
+"19 newsemaforo.c
+[; ;newsemaforo.c: 19: void newsemaforo_init (void)
+[v _newsemaforo_init `(v ~T0 @X0 1 ef ]
+"21
+[; ;newsemaforo.c: 21: {
 {
-[e :U _semaforo_inti ]
+[e :U _newsemaforo_init ]
 [f ]
-"14
-[; ;newsemaforo.c: 14: }
+"22
+[; ;newsemaforo.c: 22:     TRISDbits.TRISD7 = 0;
+[e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
+"23
+[; ;newsemaforo.c: 23:     TRISDbits.TRISD6 = 0;
+[e = . . _TRISDbits 0 6 -> -> 0 `i `uc ]
+"24
+[; ;newsemaforo.c: 24:     TRISDbits.TRISD5 = 0;
+[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
+"25
+[; ;newsemaforo.c: 25:     TRISDbits.TRISD3 = 0;
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+"26
+[; ;newsemaforo.c: 26:     TRISDbits.TRISD2 = 0;
+[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
+"27
+[; ;newsemaforo.c: 27:     TRISDbits.TRISD1 = 1;
+[e = . . _TRISDbits 0 1 -> -> 1 `i `uc ]
+"29
+[; ;newsemaforo.c: 29:     PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"30
+[; ;newsemaforo.c: 30:     PORTDbits.RD6 = 0;
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+"31
+[; ;newsemaforo.c: 31:     PORTDbits.RD7 = 0 ;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+"33
+[; ;newsemaforo.c: 33: }
 [e :UE 138 ]
+}
+"34
+[; ;newsemaforo.c: 34:  void verde(int x)
+[v _verde `(v ~T0 @X0 1 ef1`i ]
+"35
+[; ;newsemaforo.c: 35:  {
+{
+[e :U _verde ]
+"34
+[; ;newsemaforo.c: 34:  void verde(int x)
+[v _x `i ~T0 @X0 1 r1 ]
+"35
+[; ;newsemaforo.c: 35:  {
+[f ]
+"36
+[; ;newsemaforo.c: 36:      PORTDbits.RD5 = x;
+[e = . . _PORTDbits 0 5 -> _x `uc ]
+"37
+[; ;newsemaforo.c: 37:  }
+[e :UE 139 ]
+}
+"39
+[; ;newsemaforo.c: 39:  void amarelo (int x)
+[v _amarelo `(v ~T0 @X0 1 ef1`i ]
+"40
+[; ;newsemaforo.c: 40:  {
+{
+[e :U _amarelo ]
+"39
+[; ;newsemaforo.c: 39:  void amarelo (int x)
+[v _x `i ~T0 @X0 1 r1 ]
+"40
+[; ;newsemaforo.c: 40:  {
+[f ]
+"41
+[; ;newsemaforo.c: 41:      PORTDbits.RD6 = x;
+[e = . . _PORTDbits 0 6 -> _x `uc ]
+"42
+[; ;newsemaforo.c: 42:  }
+[e :UE 140 ]
+}
+"44
+[; ;newsemaforo.c: 44:  void vermelho(int x)
+[v _vermelho `(v ~T0 @X0 1 ef1`i ]
+"45
+[; ;newsemaforo.c: 45:  {
+{
+[e :U _vermelho ]
+"44
+[; ;newsemaforo.c: 44:  void vermelho(int x)
+[v _x `i ~T0 @X0 1 r1 ]
+"45
+[; ;newsemaforo.c: 45:  {
+[f ]
+"46
+[; ;newsemaforo.c: 46:      PORTDbits.RD7 = x;
+[e = . . _PORTDbits 0 7 -> _x `uc ]
+"47
+[; ;newsemaforo.c: 47:  }
+[e :UE 141 ]
+}
+"49
+[; ;newsemaforo.c: 49:  void verdePed(int x)
+[v _verdePed `(v ~T0 @X0 1 ef1`i ]
+"50
+[; ;newsemaforo.c: 50:  {
+{
+[e :U _verdePed ]
+"49
+[; ;newsemaforo.c: 49:  void verdePed(int x)
+[v _x `i ~T0 @X0 1 r1 ]
+"50
+[; ;newsemaforo.c: 50:  {
+[f ]
+"51
+[; ;newsemaforo.c: 51:      PORTDbits.RD3 = x;
+[e = . . _PORTDbits 0 3 -> _x `uc ]
+"52
+[; ;newsemaforo.c: 52:  }
+[e :UE 142 ]
+}
+"53
+[; ;newsemaforo.c: 53:  void vermelhoPed(int x)
+[v _vermelhoPed `(v ~T0 @X0 1 ef1`i ]
+"54
+[; ;newsemaforo.c: 54:  {
+{
+[e :U _vermelhoPed ]
+"53
+[; ;newsemaforo.c: 53:  void vermelhoPed(int x)
+[v _x `i ~T0 @X0 1 r1 ]
+"54
+[; ;newsemaforo.c: 54:  {
+[f ]
+"55
+[; ;newsemaforo.c: 55:      PORTDbits.RD2 = x;
+[e = . . _PORTDbits 0 2 -> _x `uc ]
+"56
+[; ;newsemaforo.c: 56:  }
+[e :UE 143 ]
+}
+"58
+[; ;newsemaforo.c: 58: int botaoPedestre ( void )
+[v _botaoPedestre `(i ~T0 @X0 1 ef ]
+"59
+[; ;newsemaforo.c: 59: {
+{
+[e :U _botaoPedestre ]
+[f ]
+"60
+[; ;newsemaforo.c: 60:     return (PORTDbits.RD1);
+[e ) -> . . _PORTDbits 0 1 `i ]
+[e $UE 144  ]
+"61
+[; ;newsemaforo.c: 61: }
+[e :UE 144 ]
 }

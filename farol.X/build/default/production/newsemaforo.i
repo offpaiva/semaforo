@@ -2500,9 +2500,47 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
 # 9 "newsemaforo.c" 2
+# 19 "newsemaforo.c"
+void newsemaforo_init (void)
 
-
-void semaforo_inti (void)
 {
+    TRISDbits.TRISD7 = 0;
+    TRISDbits.TRISD6 = 0;
+    TRISDbits.TRISD5 = 0;
+    TRISDbits.TRISD3 = 0;
+    TRISDbits.TRISD2 = 0;
+    TRISDbits.TRISD1 = 1;
 
+    PORTDbits.RD5 = 0;
+    PORTDbits.RD6 = 0;
+    PORTDbits.RD7 = 0 ;
+
+}
+ void verde(int x)
+ {
+     PORTDbits.RD5 = x;
+ }
+
+ void amarelo (int x)
+ {
+     PORTDbits.RD6 = x;
+ }
+
+ void vermelho(int x)
+ {
+     PORTDbits.RD7 = x;
+ }
+
+ void verdePed(int x)
+ {
+     PORTDbits.RD3 = x;
+ }
+ void vermelhoPed(int x)
+ {
+     PORTDbits.RD2 = x;
+ }
+
+int botaoPedestre ( void )
+{
+    return (PORTDbits.RD1);
 }

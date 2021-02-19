@@ -1,5 +1,30 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"4 ./newsemaforo.h
+[; ;./newsemaforo.h: 4: void newsemaforo_init (void);
+[v _newsemaforo_init `(v ~T0 @X0 0 ef ]
+"6
+[; ;./newsemaforo.h: 6: void amarelo (int x);
+[v _amarelo `(v ~T0 @X0 0 ef1`i ]
+"7
+[; ;./newsemaforo.h: 7: void vermelho ( int x);
+[v _vermelho `(v ~T0 @X0 0 ef1`i ]
+"5
+[; ;./newsemaforo.h: 5: void verde (int x);
+[v _verde `(v ~T0 @X0 0 ef1`i ]
+"8
+[; ;./newsemaforo.h: 8: void verdePed ( int x);
+[v _verdePed `(v ~T0 @X0 0 ef1`i ]
+"9
+[; ;./newsemaforo.h: 9: void vermelhoPed ( int x);
+[v _vermelhoPed `(v ~T0 @X0 0 ef1`i ]
+"10
+[; ;./newsemaforo.h: 10: int botaoPedestre ( void);
+[v _botaoPedestre `(i ~T0 @X0 0 ef ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -234,16 +259,250 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"11 main.c
-[; ;main.c: 11: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
+"8 ./config.h
+[p x FOSC = INTRC_NOCLKOUT ]
+"9
+[p x WDTE = OFF ]
+"10
+[p x PWRTE = OFF ]
+"11
+[p x MCLRE = OFF ]
 "12
-[; ;main.c: 12: {
+[p x CP = OFF ]
+"13
+[p x CPD = OFF ]
+"14
+[p x BOREN = OFF ]
+"15
+[p x IESO = OFF ]
+"16
+[p x FCMEN = OFF ]
+"17
+[p x LVP = OFF ]
+"20
+[p x BOR4V = BOR40V ]
+"21
+[p x WRT = OFF ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"14 main.c
+[; ;main.c: 14: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"15
+[; ;main.c: 15: {
 {
 [e :U _main ]
 [f ]
-"15
-[; ;main.c: 15: }
+"16
+[; ;main.c: 16:     int estado = 0;
+[v _estado `i ~T0 @X0 1 a ]
+[e = _estado -> 0 `i ]
+"17
+[; ;main.c: 17:     int t;
+[v _t `i ~T0 @X0 1 a ]
+"18
+[; ;main.c: 18:     while(1)
+[e :U 140 ]
+"19
+[; ;main.c: 19:     {
+{
+"20
+[; ;main.c: 20:         switch ( estado )
+[e $U 143  ]
+"21
+[; ;main.c: 21:         {
+{
+"22
+[; ;main.c: 22:             case 0:
+[e :U 144 ]
+"23
+[; ;main.c: 23:                     estado = 1;
+[e = _estado -> 1 `i ]
+"24
+[; ;main.c: 24:                     break;
+[e $U 142  ]
+"25
+[; ;main.c: 25:             case 1:
+[e :U 145 ]
+"26
+[; ;main.c: 26:                     newsemaforo_init();
+[e ( _newsemaforo_init ..  ]
+"27
+[; ;main.c: 27:                     estado = 2;
+[e = _estado -> 2 `i ]
+"28
+[; ;main.c: 28:                     break;
+[e $U 142  ]
+"29
+[; ;main.c: 29:             case 2:
+[e :U 146 ]
+"30
+[; ;main.c: 30:                     amarelo(0);
+[e ( _amarelo (1 -> 0 `i ]
+"31
+[; ;main.c: 31:                     vermelho(0);
+[e ( _vermelho (1 -> 0 `i ]
+"32
+[; ;main.c: 32:                     verde(1);
+[e ( _verde (1 -> 1 `i ]
+"33
+[; ;main.c: 33:                     verdePed(0);
+[e ( _verdePed (1 -> 0 `i ]
+"34
+[; ;main.c: 34:                     vermelhoPed(1);
+[e ( _vermelhoPed (1 -> 1 `i ]
+"35
+[; ;main.c: 35:                     if (botaoPedestre() == 1 )
+[e $ ! == ( _botaoPedestre ..  -> 1 `i 147  ]
+"36
+[; ;main.c: 36:                     estado = 3;
+[e = _estado -> 3 `i ]
+[e :U 147 ]
+"37
+[; ;main.c: 37:                     break;
+[e $U 142  ]
+"38
+[; ;main.c: 38:             case 3:
+[e :U 148 ]
+"39
+[; ;main.c: 39:                     t = 3000;
+[e = _t -> 3000 `i ]
+"40
+[; ;main.c: 40:                     estado = 4;
+[e = _estado -> 4 `i ]
+"41
+[; ;main.c: 41:                     break;
+[e $U 142  ]
+"42
+[; ;main.c: 42:             case 4:
+[e :U 149 ]
+"43
+[; ;main.c: 43:                     _delay(1);
+[e ( __delay (1 -> -> -> 1 `i `l `ul ]
+"44
+[; ;main.c: 44:                     --t;
+[e =- _t -> 1 `i ]
+"45
+[; ;main.c: 45:                     if (t<=0)
+[e $ ! <= _t -> 0 `i 150  ]
+"46
+[; ;main.c: 46:                     estado = 5;
+[e = _estado -> 5 `i ]
+[e :U 150 ]
+"47
+[; ;main.c: 47:                     break;
+[e $U 142  ]
+"48
+[; ;main.c: 48:             case 5:
+[e :U 151 ]
+"49
+[; ;main.c: 49:                     verde(0);
+[e ( _verde (1 -> 0 `i ]
+"50
+[; ;main.c: 50:                     vermelho(0);
+[e ( _vermelho (1 -> 0 `i ]
+"51
+[; ;main.c: 51:                     verdePed (0);
+[e ( _verdePed (1 -> 0 `i ]
+"52
+[; ;main.c: 52:                     amarelo (1);
+[e ( _amarelo (1 -> 1 `i ]
+"53
+[; ;main.c: 53:                     vermelhoPed (1);
+[e ( _vermelhoPed (1 -> 1 `i ]
+"54
+[; ;main.c: 54:                     t = 2000;
+[e = _t -> 2000 `i ]
+"55
+[; ;main.c: 55:                     estado = 6;
+[e = _estado -> 6 `i ]
+"56
+[; ;main.c: 56:                     break;
+[e $U 142  ]
+"57
+[; ;main.c: 57:             case 6:
+[e :U 152 ]
+"58
+[; ;main.c: 58:                     _delay(1);
+[e ( __delay (1 -> -> -> 1 `i `l `ul ]
+"59
+[; ;main.c: 59:                     --t;
+[e =- _t -> 1 `i ]
+"60
+[; ;main.c: 60:                     if (t<=0)
+[e $ ! <= _t -> 0 `i 153  ]
+"61
+[; ;main.c: 61:                     estado = 7;
+[e = _estado -> 7 `i ]
+[e :U 153 ]
+"62
+[; ;main.c: 62:                     break;
+[e $U 142  ]
+"63
+[; ;main.c: 63:             case 7:
+[e :U 154 ]
+"64
+[; ;main.c: 64:                     verde (0);
+[e ( _verde (1 -> 0 `i ]
+"65
+[; ;main.c: 65:                     amarelo(0);
+[e ( _amarelo (1 -> 0 `i ]
+"66
+[; ;main.c: 66:                     vermelhoPed(0);
+[e ( _vermelhoPed (1 -> 0 `i ]
+"67
+[; ;main.c: 67:                     vermelho(1);
+[e ( _vermelho (1 -> 1 `i ]
+"68
+[; ;main.c: 68:                     verdePed(1);
+[e ( _verdePed (1 -> 1 `i ]
+"69
+[; ;main.c: 69:                     t = 4000;
+[e = _t -> 4000 `i ]
+"70
+[; ;main.c: 70:                     break;
+[e $U 142  ]
+"71
+[; ;main.c: 71:             case 8:
+[e :U 155 ]
+"72
+[; ;main.c: 72:                     _delay(1);
+[e ( __delay (1 -> -> -> 1 `i `l `ul ]
+"73
+[; ;main.c: 73:                     --t;
+[e =- _t -> 1 `i ]
+"74
+[; ;main.c: 74:                     if (t<=0)
+[e $ ! <= _t -> 0 `i 156  ]
+"75
+[; ;main.c: 75:                     estado = 2;
+[e = _estado -> 2 `i ]
+[e :U 156 ]
+"77
+[; ;main.c: 77:                     break;
+[e $U 142  ]
+"79
+[; ;main.c: 79:         }
+}
+[e $U 142  ]
+[e :U 143 ]
+[e [\ _estado , $ -> 0 `i 144
+ , $ -> 1 `i 145
+ , $ -> 2 `i 146
+ , $ -> 3 `i 148
+ , $ -> 4 `i 149
+ , $ -> 5 `i 151
+ , $ -> 6 `i 152
+ , $ -> 7 `i 154
+ , $ -> 8 `i 155
+ 142 ]
+[e :U 142 ]
+"81
+[; ;main.c: 81:     }
+}
+[e :U 139 ]
+[e $U 140  ]
+[e :U 141 ]
+"83
+[; ;main.c: 83: }
 [e :UE 138 ]
 }
